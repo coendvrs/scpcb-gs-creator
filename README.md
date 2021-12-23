@@ -2,7 +2,7 @@
 Python script to easily create Google Apps Scripts for SCP:CB and SCP:CB Multiplayer.
 This quickly makes a .gs script for modding purposes.
 
-###
+##
 
 Within the script you can input a folder and it searches all of it contents and outputs it into a script.gs.\
 It can also go through all the folders within the scripts directory.\
