@@ -14,5 +14,9 @@ This removes the need to manually input all of the files inside of the GS file t
 
 ##
 
-Demonstration\
+Demonstration of the script\
 ![Demonstration GIF](https://coendvrs.com/ezgif-7-9ba253689b.gif)
+
+##
+
+
