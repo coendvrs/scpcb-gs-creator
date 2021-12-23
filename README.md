@@ -1,5 +1,5 @@
 # SCPCB Google Apps Script Creator
-Python script to easily create Google Apps Scripts for SCP:CB and SCP:CB Multiplayer.
+Python script to easily create Google Apps Scripts for SCP:CB and SCP:CB Multiplayer.\
 This quickly makes a .gs script for modding purposes.
 
 ##
@@ -13,3 +13,6 @@ Example is the 1449chunks.ini inside the data folder, this will turn into:\
 This removes the need to manually input all of the files inside of the GS file that you want to redirect.
 
 ##
+
+Demonstration\
+![Demonstration GIF](https://coendvrs.com/ezgif-7-9ba253689b.gif)
