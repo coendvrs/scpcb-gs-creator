@@ -11,3 +11,5 @@ Every file it can find, that isn't a directory will be put inside of the script.
 Example is the 1449chunks.ini inside the data folder, this will turn into:\
 `RedirectFile("Data\1499chunks.ini", getscriptpath()+"\Data\1499chunks.ini")` within the GS file.\
 This removes the need to manually input all of the files inside of the GS file that you want to redirect.
+
+##
