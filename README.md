@@ -18,5 +18,3 @@ Demonstration of the script\
 ![Demonstration GIF](https://coendvrs.com/ezgif-7-9ba253689b.gif)
 
 ##
-
-[File Name](url)
