@@ -4,6 +4,7 @@
 # Also feel free to edit the code to your likings.
 
 import os
+import shutil
 
 print("\n##### Licensed under AGPL-3.0 License #####")
 print("SCPCB Google Apps Script Creator")
@@ -24,13 +25,13 @@ while finished == 0:
 	# Prompts the user to input a folder.
 	# User can also type all for all folders in current dir.
 	# Typing none will break out of the script.
-	path = input("\nType folder to add to GS file (to stop = none | all folders/files = all) ")
+	path = input("\nType folder/file to add to GS file (to stop = exit | all folders/files = all) ")
 	filelist = []
 	dirList = []
 	confirmAll = "none"
 
 	# Executes if user inputs "none".
-	if path.lower() == "none":break
+	if path.lower() == "exit":break
 
 	# Executes if user inputs "all".
 	if path.lower() == "all":
@@ -40,7 +41,7 @@ while finished == 0:
 		confirmAll = input("Are you sure you want to continue? (Yes/Y) ")
 		if confirmAll.lower() in ["yes","y"]:path = ".\\"
 
-	# Executes if user inputs a folder name.
+	# Executes if user inputs a folder.
 	for root, dirs, files in os.walk(path):
 		for file in files:
 			# Skips python files thus skips this script
@@ -51,8 +52,19 @@ while finished == 0:
     # Opens or makes the script.gs file and for each file it can find will add to the script.
 	for name in filelist:
 		gsfile = open("script.gs","a")
-		if confirmAll.lower() in ["yes","y"]:gsfile.write('RedirectFile("'+name[2:]+'", getscriptpath()+"\\'+name[2:]+'")\n')
-		else:gsfile.write('RedirectFile("'+name+'", getscriptpath()+"\\'+name+'")\n')
+		if confirmAll.lower() in ["yes","y"]:
+			# Checks if it is a folder or a file and acts according to said type
+			if "\\" in name[2:]:gsfile.write('RedirectFile("'+name[2:]+'", getscriptpath()+"\\'+name[2:]+'")\n')
+			else:
+				if not os.path.exists("main"):os.mkdir("main")
+				gsfile.write('RedirectFile("'+name[2:]+'", getscriptpath()+"\\'+"main\\"+name[2:]+'")\n')
+				shutil.move(name, ".\\main\\"+name[2:])
+		else:
+			if "\\" in name:gsfile.write('RedirectFile("'+name+'", getscriptpath()+"\\'+name+'")\n')
+			else:
+				if not os.path.exists("main"):os.mkdir("main")
+				gsfile.write('RedirectFile("'+name+'", getscriptpath()+"\\'+"main\\"+name+'")\n')
+				shutil.move(name, ".\\main\\"+name)
 		gsfile.close()
 
 	print("\nFinished\n")
